@@ -4,24 +4,21 @@
 <h1>Finch List</h1>
 
 {% for finch in finches %}
-<table class="table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope="col">Finch Name</th>
-        <th scope="col">Finch Type</th>
-        <th scope="col">Continent</th>
-        <th scope="col">Age</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{finch.name}}</td>
-        <td>{{finch.type}}</td>
-        <td>{{finch.continent}}</td>
-        <td>{{finch.age}}</td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="card" style="width: 18rem;">
+  <a style="text-decoration: none;" href="{% url 'detail' finch.id %}">
+  <div class="card-body">
+    <h5 class="card-title">{{finch.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{finch.type}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{finch.continent}}</h6>
+    {% if finch.age > 0 %}
+    <p>Age: {{ finch.age }}</p>
+  {% else %}
+    <p>Age: hatchling</p>
+  {% endif %}
+  </div>
+  </a>
+</div>
 
 
 
